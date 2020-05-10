@@ -1,14 +1,17 @@
-import React, { ButtonHTMLAttributes } from 'react'
-import { Container } from './styles'
-/**
- * @type is used when you are not modifing the property
- */
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+import React from 'react';
+import {RectButtonProperties} from 'react-native-gesture-handler';
+import {Container, ButtonText} from './styles';
 
-const Button: React.FC<ButtonProps> = ({ children, ...rest }) => (
-  <Container {...rest} type="submit">
-    {children}
-  </Container>
-)
+interface RectButtonProps extends RectButtonProperties {
+  children: string;
+}
 
-export default Button
+const Button: React.FC<RectButtonProps> = ({children, ...rest}) => {
+  return (
+    <Container {...rest}>
+      <ButtonText>{children} </ButtonText>
+    </Container>
+  );
+};
+
+export default Button;

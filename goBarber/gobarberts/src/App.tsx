@@ -1,15 +1,17 @@
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import GlobalStyle from './styles/global'
-import Routes from './routes/'
-import AppProvider from './context/index'
+/* eslint-disable react-native/no-inline-styles */
+import 'react-native-gesture-handler';
+import React from 'react';
+import {View, StatusBar} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import Routes from './routes';
 
 const App: React.FC = () => (
-  <Router>
-    <AppProvider>
+  <NavigationContainer>
+    <StatusBar barStyle="light-content" />
+    <View style={{flex: 1, backgroundColor: '#312e38'}}>
       <Routes />
-    </AppProvider>
-    <GlobalStyle />
-  </Router>
-)
-export default App
+    </View>
+  </NavigationContainer>
+);
+
+export default App;

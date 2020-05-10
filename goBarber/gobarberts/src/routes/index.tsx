@@ -1,16 +1,23 @@
-import React from 'react'
-import { Switch } from 'react-router-dom'
-import Singup from '../pages/Singup/index'
-import Sigin from '../pages/Signin/index'
-import Router from './Routes'
-import Dashboard from '../pages/Dashboard'
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const Routes: React.FC = () => (
-  <Switch>
-    <Router exact path="/" component={Sigin} />
-    <Router path="/signup" component={Singup} />
-    <Router path="/dashboard" component={Dashboard} isPrivate />
-  </Switch>
-)
+import Signin from '../pages/Signin/index';
+import Signup from '../pages/Signup/index';
 
-export default Routes
+const Auth = createStackNavigator();
+
+const AuthRoutes: React.FC = () => (
+  <Auth.Navigator
+    /**
+     * @screenOptions targets the header bar
+     */
+    screenOptions={{
+      headerShown: false,
+      cardStyle: {backgroundColor: '#312e38'},
+    }}>
+    <Auth.Screen name="Signin" component={Signin} />
+    <Auth.Screen name="Signup" component={Signup} />
+  </Auth.Navigator>
+);
+
+export default AuthRoutes;
